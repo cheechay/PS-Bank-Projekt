@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+}
+
+.container{
+    display: flex;
+    max-width: 100%;
+    max-width: 960px;
+    background-color: rgb(251, 249, 248);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.right-side{
+    width: 50%;
+    background: #c2d2f2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-side img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.left-side{
+    width: 50%;
+    background: #c2d2f2;
+    padding: 40px;
+
+}
+.welcome-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;       /* spacing between hr and text */
+    margin: 20px 0;
+}
+
+.welcome-container hr {
+    flex: 1;         /* makes both lines fill space */
+    border: none;
+    height: 2px;     /* thickness */
+    background: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 95%;
+}
+
+
+.eye-icon {
+    position: relative;
+    left: calc(100% - 25px);
+    top: -40px;
+    cursor: pointer;
+    font-size: 18px;
+    background: transparent;
+    border: transparent;
+}
+.primary-btn {
+   
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    background: #004aad;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+p{
+    margin-top: 50px;
+    
+}
+p button{
+ background: transparent;
+ border: transparent;
+ color: #00337a;
+ font-weight: 500;
+}
+
+
+.primary-btn:hover {
+    background: #00337a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .Container {
+        flex-direction: column;
+    }
+    .right-area, .left-area {
+        width: 100%;
+    }
+    .right-area {
+        padding: 40px 20px;
+    }
+}
+
