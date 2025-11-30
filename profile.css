@@ -1,3 +1,4 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,61 +6,121 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Page */
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f1f1f1;
 }
 
-.konto-area{
-    width: 100%;
-    max-width: 1000px;
-    background: #ffffff;
-    border-radius: 24px;
-    background: #c2d2f2;
+/* Main container */
+.container {
+    width: 80%;
+    max-width: 900px;
+    height: 750px;
+    border-radius: 20px;
+    padding: 20px 36px 20px;
+    background-color:rgb(244, 245, 246);
+    box-shadow:
+    0 16px 26px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+    
+}
+
+/* Title */
+.container h1 {
+    text-align: center;
+    color: black;
+
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+h1{
+    margin-top: 20px;
+}
+/* ATM box */
+.konto-area {
+    margin-top: 20px;
+    border: 4px solid rgb(16, 54, 247);
+    border-radius: 20px;
+    padding: 40px;
+    /* 2 column layout */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 40px;
+   
+outline: none;
    
 }
 
-.right{
-    width: 50%;
-  
-    position: relative;
-    padding: 20px;
+
+
+.left,
+.right {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.left{
-    width: 50%;
-    position: relative;
-    padding: 20px;
-    display: flex;
+/* ATM Buttons */
+.konto-area button {
     justify-content: center;
+    width: 100%;
+    height: 150px;
+    max-width: 300px;
+    padding: 16px 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(83, 144, 201, 0.6);
+    background: #00337a;
+    color:white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.75);
+   
 }
 
 
+/* Icon circle */
+.konto-area button img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
 
-  .input-row {
+.konto-area button label {
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.konto-area button:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(145deg, #264a8f, #325fb3);
+    box-shadow:
+        0 16px 26px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+    outline: none;
+}
+
+
+.konto-area label {
+    cursor: pointer;
+}
+
+.input-row {
+    margin-left: 30px;
     margin-top: 20px;
-    text-align: left;
-    font-size: 15px;
+    color: rgb(11, 9, 9);
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 6px;
+.input-row input {
+    padding: 7px 10px;
+    border-radius: 6px;
+
+    border: 1px solid #000000;
+    margin-left: 10px;
 }
-
-input {
-    width: 220px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-

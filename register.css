@@ -17,7 +17,7 @@ body {
     display: flex;
     max-width: 960px;
     width: 100%;
-    background-color: rgb(251, 249, 248);
+   background-color: rgb(251, 249, 248);
     border-radius: 24px;
     overflow: hidden;
 }
@@ -43,7 +43,7 @@ body {
 /* RIGHT SIDE */
 
 .right-side {
-    background: #c2d2f2;
+   background: #c2d2f2;
     width: 50%;
     padding: 40px;
 }
