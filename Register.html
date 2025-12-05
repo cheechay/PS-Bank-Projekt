@@ -11,26 +11,26 @@
         <div class="right-side">
             <h1>Create an Account</h1>
 
-            <form action="">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" required>
+            <form action="register.php" method="post">
+                <label for="firstname">First Name</label>
+                <input type="text" id="fname" name="firstname" required>
 
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" required>
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lname" name="lastname" required>
 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
 
              <div class="password-area">
-                 <label for="password">Create Password</label>
-                 <input type="password" id="password" name="password"  minlength="6" required>
+                 <label for="passwort">Create Password</label>
+                 <input type="password" id="password" name="passwort"  minlength="6" required>
                  <button type="button" id="eyes-btn" class="eye-icon" aria-label="show password" aria-pressed="false">👁</button>
              </div>   
             
              <label for="gender">Gender</label>
                 <div class="gender-option">
-                    <label><input type="radio" name="gender" value="Male">Male</label>
-                    <label><input type="radio" name="gender" value="Female">Female</label>
+                    <label><input type="radio" name="gender" value="male">Male</label>
+                    <label><input type="radio" name="gender" value="female">Female</label>
                     <label><input type="radio" name="gender" value="Othes">Others</label>
                 </div>
 
