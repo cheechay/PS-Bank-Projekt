@@ -103,29 +103,37 @@ $id = $_SESSION['id'] ?? '';
         }
     }
     function getTransfer() {
-        let transferAmount = prompt("Please enter the amount to be transfer");
+        // Prompt for the transfer amount and the usersID
+        let transferAmount = prompt("Please enter the amount to be transferred");
         let usersID = prompt("Please enter the UserID");
 
-        if (transferAmount != null && userID != null) {
+        // Check if both values are not null or empty
+        if (transferAmount != null && usersID != null && transferAmount.trim() !== "" && usersID.trim() !== "") {
+            // Send the data using fetch to 'transfer.php'
             fetch('transfer.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'amount=' + encodeURIComponent(transferAmount) +
                     '&usersID=' + encodeURIComponent(usersID)
-
             })
                 .then(response => response.text())
                 .then(data => {
+                    // Show the server response
                     alert("Server says: " + data);
-                    // Optional: reload page or update UI
-                    location.reload();
+                    // Optionally: reload page or update UI based on response
+                    location.reload(); // Refreshes the page after the transfer
                 })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Something went wrong.');
+                });
         } else {
-            if (userID == null) {
-                alert("Invalid userID")
-            } else alert("Invalid Amount")
-
+            // Handle case where one of the inputs is invalid
+            if (usersID == null || usersID.trim() === "") {
+                alert("Invalid UserID");
+            } else if (transferAmount == null || transferAmount.trim() === "") {
+                alert("Invalid Amount");
+            }
         }
     }
 
