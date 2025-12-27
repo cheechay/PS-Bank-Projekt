@@ -121,16 +121,16 @@ input {
 
 .button-area {
     display: flex;
-    gap: 10px;
+    gap: 50px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
-.primary-btn,
-.secondary-btn {
+.primary-btn {
     padding: 12px;
     background: #004aad;
+    
     border: none;
     color: #fff;
     font-size: 16px;
@@ -141,12 +141,8 @@ input {
     text-transform: capitalize;
 }
 
-.secondary-btn {
-    background: #64748b;
-}
 
-.primary-btn:hover,
-.secondary-btn:hover {
+.primary-btn:hover {
     background: #00337a;
 }
 
