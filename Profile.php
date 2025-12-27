@@ -1,51 +1,139 @@
+<?php
+session_start();
+$firstname = $_SESSION['firstname'] ?? '';
+$lastname = $_SESSION['lastname'] ?? '';
+$amount = $_SESSION['amount'] ?? '';
+$id = $_SESSION['id'] ?? '';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PS-Bank Konto</title>
     <link rel="stylesheet" href="profile.css">
 </head>
+
 <body>
     <div class="container">
-        <h1>Welcome to your ATM Account</h1>
+        <h1>Hello <?php echo $firstname; ?>! Welcome to your Account </h1>
         <div class="konto-area">
+
             <div class="left">
-                    <button>
-                        <img src="withdraw.png" alt="PNG withdrawal">
-                        <label for="withdrawal">Cash Withdrawal</label>
-                    </button>
-            </div>     
+                <button name="withdraw" value="1" type="submit" onclick="getWithdraw()">
+                    <img src="withdraw.png" alt="PNG withdrawal">
+                    <label for="withdrawal">Cash Withdrawal</label>
+                </button>
+            </div>
             <div class="right">
-                    <button> 
-                        <img src="deposit.png" alt="PNG Deposit">
-                        <label for="Deposit">Deposit</label>
-                    </button>
-            </div> 
+                <button name="deposit" value="1" type="submit" onclick="getDeposit()">
+                    <img src="deposit.png" alt="PNG Deposit">
+                    <label for="Deposit">Deposit</label>
+                </button>
+            </div>
             <div class="left">
-                    <button>
-                         <img src="Balance+.png" alt="PNG Balance"> <!-- need to change the icon-->
-                         <label for="Balance Check">Balance Check</label>
-                    </button>
-            </div> 
+
+                <button name="balance" type="submit" onclick="getAmount()">
+                    <img src="Balance+.png" alt="PNG Balance"> <!-- need to change the icon-->
+                    <label for="Balance Check">Balance Check</label>
+                </button>
+
+            </div>
             <div class="right">
-                    <button> 
-                        <img src="trasfer.png" alt="PNG Transfer">
-                        <label for="Money Transfer">Money Transfer</label>
-                    </button>
-            </div>    
+                <button name="transfer" value="1" type="submit" onclick="getTransfer()">
+                    <img src="trasfer.png" alt="PNG Transfer">
+                    <label for="Money Transfer">Money Transfer</label>
+                </button>
+            </div>
 
         </div>
 
-        <div class="input-row">
-            <label for="amount">Give an amount and select one of the actions above:</label>
-            <input type="number" id="amount" placeholder="Amount ">
-        </div>
-    
-        <div class="input-row">
-            <label for="account">Transfer money to this Account no:</label>
-            <input type="text" id="account" placeholder="Account Number">
-        </div>
-    </div>   
+
+    </div>
 </body>
+
 </html>
+
+<script>
+    function getAmount() {
+        alert('Your balance is ' + <?php echo json_encode($amount); ?>);
+    }
+
+    function getDeposit() {
+        let depositAmount = prompt("Please enter the amount to be deposited");
+
+        if (depositAmount != null && depositAmount.trim() !== "") {
+            fetch('deposit.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'amount=' + encodeURIComponent(depositAmount)
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert("Server says: " + data);
+                    // Optional: reload page or update UI
+                    location.reload();
+                })
+                .catch(error => console.error(error));
+        } else {
+            alert("No amount entered");
+        }
+    }
+    function getWithdraw() {
+        let withdrawAmount = prompt("Please enter the amount to be deposited");
+
+        if (withdrawAmount != null && withdrawAmount.trim() !== "") {
+            fetch('withdraw.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'amount=' + encodeURIComponent(withdrawAmount)
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert("Server says: " + data);
+                    // Optional: reload page or update UI
+                    location.reload();
+                })
+                .catch(error => console.error(error));
+        } else {
+            alert("No amount entered");
+        }
+    }
+    function getTransfer() {
+        let transferAmount = prompt("Please enter the amount to be transfer");
+        let usersID = prompt("Please enter the UserID");
+
+        if (transferAmount != null && userID != null) {
+            fetch('transfer.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'amount=' + encodeURIComponent(transferAmount) +
+                    '&usersID=' + encodeURIComponent(usersID)
+
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert("Server says: " + data);
+                    // Optional: reload page or update UI
+                    location.reload();
+                })
+                .catch(error => console.error(error));
+        } else {
+            if (userID == null) {
+                alert("Invalid userID")
+            } else alert("Invalid Amount")
+
+        }
+    }
+
+
+
+
+
+
+
+
+</script>
