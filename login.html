@@ -27,7 +27,6 @@
                     
                     <div class="password-area">
                         <input type="password" id="password" name="passwordHome" minlength="6" required>
-                        <button type="button" class="eye-icon" aria-label="Show password" aria-pressed="false">👁</button>
                     </div>
     
                     <button type="submit" class="primary-btn">Login</button>
@@ -40,18 +39,5 @@
 
         </div>
     </div>
-    
-    <script >
-        const passwordInput = document.getElementById('password');
-            const eyeBtn = document.querySelector('.eye-icon');
-
-            eyeBtn.addEventListener('click', () => {
-                const isHidden = passwordInput.type === 'password';
-                passwordInput.type = isHidden ? 'text' : 'password';
-                eyeBtn.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
-                eyeBtn.textContent = isHidden ? '🙈' : '👁';
-            });
-
-    </script>
 </body>
 </html>

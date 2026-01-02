@@ -73,8 +73,7 @@ $id = $_SESSION['id'] ?? '';
             })
                 .then(response => response.text())
                 .then(data => {
-                    alert("Server says: " + data);
-                    // Optional: reload page or update UI
+                    alert(data);
                     location.reload();
                 })
                 .catch(error => console.error(error));
@@ -93,8 +92,7 @@ $id = $_SESSION['id'] ?? '';
             })
                 .then(response => response.text())
                 .then(data => {
-                    alert("Server says: " + data);
-                    // Optional: reload page or update UI
+                    alert(data);
                     location.reload();
                 })
                 .catch(error => console.error(error));
@@ -103,7 +101,6 @@ $id = $_SESSION['id'] ?? '';
         }
     }
     function getTransfer() {
-        // Prompt for the transfer amount and the usersID
         let transferAmount = prompt("Please enter the amount to be transferred");
         let usersID = prompt("Please enter the UserID");
 
@@ -118,17 +115,15 @@ $id = $_SESSION['id'] ?? '';
             })
                 .then(response => response.text())
                 .then(data => {
-                    // Show the server response
-                    alert("Server says: " + data);
-                    // Optionally: reload page or update UI based on response
-                    location.reload(); // Refreshes the page after the transfer
+                    alert(data);
+                    location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Something went wrong.');
                 });
         } else {
-            // Handle case where one of the inputs is invalid
+
             if (usersID == null || usersID.trim() === "") {
                 alert("Invalid UserID");
             } else if (transferAmount == null || transferAmount.trim() === "") {
@@ -136,12 +131,5 @@ $id = $_SESSION['id'] ?? '';
             }
         }
     }
-
-
-
-
-
-
-
 
 </script>

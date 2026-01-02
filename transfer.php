@@ -18,11 +18,14 @@ $usersID = (int) ($_POST['usersID'] ?? 0);
 
 // Validate inputs
 if ($amountToTransfer <= 0 || $usersID < 1) {
-    die("Invalid input: Amount and user ID must be positive.");
+    die("Invalid input.");
 }
 
 if ($amountToTransfer > $amount) {
     die("Insufficient funds.");
+}
+if ($usersID == $userId) {
+    die("Invalid input.");
 }
 
 // Check if the recipient user exists in the database
@@ -32,8 +35,11 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check if the recipient exists
-    $stmtCheck = $db->prepare("SELECT * FROM form WHERE id = :usersID");
-    $stmtCheck->execute([':usersID' => $usersID]);
+    $stmtCheck = $db->prepare("SELECT * FROM form WHERE id = :usersID AND id<> :userId");
+    $stmtCheck->execute([
+        ':usersID' => $usersID,
+        ':userId' => $userId
+    ]);
     $recipient = $stmtCheck->fetch(PDO::FETCH_ASSOC);
 
     if (!$recipient) {
@@ -75,7 +81,7 @@ try {
     // Update session amount (optional)
     $_SESSION['amount'] -= $amountToTransfer;
 
-    echo "Successfully transferred $amountToTransfer to user ID $usersID.";
+    echo "Successfully transferred $amountToTransfer to user ID $usersID 😊.";
 
 } catch (PDOException $e) {
     // Rollback the transaction in case of any error

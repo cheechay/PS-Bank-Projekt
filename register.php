@@ -11,15 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "Account successfully opened.";
 
     try {
-        // 1️⃣ Connect to SQLite (creates bank.db if not exists)
+        // Connect to SQLite (creates bank.db if not exists)
         $conn = new PDO("sqlite:bank.db");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // 2️⃣ Create table if not exists
+        // Create table if not exists
         $conn->exec("
             CREATE TABLE IF NOT EXISTS form (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                email TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
                 passwort TEXT NOT NULL,
                 firstname TEXT NOT NULL,
                 lastname TEXT NOT NULL,
@@ -40,9 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':lastname' => $lastname,
             ':gender' => $gender
         ]);
-
-
-        mail($email, $subject, $userInfo);
 
         echo "
             <script>

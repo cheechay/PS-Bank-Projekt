@@ -33,7 +33,7 @@ try {
     // Update session amount (optional)
     $_SESSION['amount'] += $amountToDeposit;
 
-    echo "Successfully deposited $amountToDeposit";
+    echo "Successfully deposited $amountToDeposit Euro 😊.";
 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();

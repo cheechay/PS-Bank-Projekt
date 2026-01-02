@@ -18,6 +18,9 @@ $amountToWithdraw = (int) ($_POST['amount'] ?? 0);
 if ($amountToWithdraw <= 0) {
     die("Invalid amount");
 }
+if ($amountToWithdraw > $amount) {
+    die("You don't have enough balance☹️");
+}
 
 try {
     $db = new PDO("sqlite:bank.db");
@@ -33,7 +36,7 @@ try {
     // Update session amount (optional)
     $_SESSION['amount'] -= $amountToWithdraw;
 
-    echo "Successfully withdraw  $amountToWithdraw ";
+    echo "Successfully withdraw  $amountToWithdraw Euro 😊. ";
 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
