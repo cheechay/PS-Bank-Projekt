@@ -1,126 +1,223 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
-/* Page */
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Main container */
-.container {
-    width: 80%;
-    max-width: 900px;
-    height: 750px;
-    border-radius: 20px;
-    padding: 20px 36px 20px;
-    background-color:rgb(244, 245, 246);
-    box-shadow:
-    0 16px 26px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
     
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-/* Title */
-.container h1 {
-    text-align: center;
-    color: black;
+ 
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+    }
 
-    font-size: 40px;
-    margin-bottom: 5px;
-}
-h1{
-    margin-top: 20px;
-}
-/* ATM box */
-.konto-area {
-    margin-top: 20px;
-    border: 4px solid rgb(16, 54, 247);
-    border-radius: 20px;
-    padding: 40px;
-    /* 2 column layout */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 60px 40px;
-   
-outline: none;
-   
-}
-
-
-
-.left,
-.right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ATM Buttons */
-.konto-area button {
-    justify-content: center;
-    width: 100%;
-    height: 150px;
-    max-width: 300px;
-    padding: 16px 10px 14px;
-    border-radius: 14px;
-    border: 1px solid rgba(83, 144, 201, 0.6);
-    background: #00337a;
-    color:white;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.75);
-   
-}
-
-
-/* Icon circle */
-.konto-area button img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-}
-
-.konto-area button label {
-    font-size: 22px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.konto-area button:hover {
-    transform: translateY(-4px);
-    background: linear-gradient(145deg, #264a8f, #325fb3);
-    box-shadow:
-        0 16px 26px rgba(0, 0, 0, 0.8),
+    /* Main container */
+    .container {
+      width: 80%;
+      max-width: 900px;
+      min-height: 750px;
+      border-radius: 20px;
+      padding: 20px 36px;
+      background-color: rgb(244, 245, 246);
+      box-shadow:
+        0 16px 26px rgba(0, 0, 0, 0.25),
         0 0 0 1px rgba(255, 255, 255, 0.06);
-    outline: none;
-}
+    }
+
+    
+    .container h1 {
+      text-align: center;
+      color: black;
+      font-size: 40px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
 
-.konto-area label {
-    cursor: pointer;
-}
+    .divider {
+      height: 10px;
+      background-color: rgb(16, 16, 77);
+      border: none;
+      border-radius: 8px;
+      margin: 10px 0 20px;
+    }
 
-.input-row {
-    margin-left: 30px;
-    margin-top: 20px;
-    color: rgb(11, 9, 9);
-}
+    /* Layout wrapper */
+    .atm-layout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+    }
 
-.input-row input {
-    padding: 7px 10px;
+    /* Button columns */
+    .btn-leftside,
+    .btn-rightside {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    /* ATM Buttons */
+    .atm-btn {
+      width: 150px;
+      height: 90px;
+      padding: 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(83, 144, 201, 0.6);
+      background: #00337a;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .atm-btn:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(145deg, #264a8f, #325fb3);
+      box-shadow:
+        0 16px 26px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    /* Icons (optional) */
+    .atm-btn img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* ATM Screen box */
+    .konto-area {
+      border: 15px solid rgb(16, 54, 247);
+      border-radius: 20px;
+      padding: 40px;
+      width: 500px;
+      height: 300px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 40px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    /* Menu items */
+    .menu-item {
+      font-size: 16px;
+      font-weight: 600;
+      cursor: default;
+      user-select: none;
+    }
+
+    .left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    /* Cash slot body */
+    .slot.cash {
+      margin: 28px auto 0;
+      width: 360px;
+      padding: 12px;
+      background: linear-gradient(180deg, #bdbdbd, #9f9f9f);
+      border-radius: 14px;
+      box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .slot-label {
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #111;
+      text-align: center;
+    }
+
+    .slot-mouth {
+      height: 14px;
+      background: linear-gradient(180deg, #1b1b1b, #000);
+      border-radius: 10px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .cash-stack {
+      position: relative;
+      width: 85%;
+      height: 70px;
+      margin: 6px auto 0;
+      overflow: visible;
+    }
+
+    .bill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 100%;
+      height: 52px;
+      border-radius: 6px;
+      opacity: 0;
+      transform: translateY(-40px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bill img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .cash-stack.dispense .bill {
+      animation: billOut 0.6s ease forwards;
+    }
+
+    .cash-stack.dispense .bill:nth-child(1) { animation-delay: 0s; }
+    .cash-stack.dispense .bill:nth-child(2) { animation-delay: 0.18s; }
+    .cash-stack.dispense .bill:nth-child(3) { animation-delay: 0.36s; }
+    .cash-stack.dispense .bill:nth-child(4) { animation-delay: 0.54s; }
+
+    @keyframes billOut {
+      0% { transform: translateY(-40px); opacity: 0; }
+      40% { opacity: 1; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+
+.back-btn{
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    background: #004aad;
+    border: none;
+    color: #fff;
+    font-size: 16px;
     border-radius: 6px;
-
-    border: 1px solid #000000;
-    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+    transition: 0.2s;
+   
+    margin-left: 700px;
 }
