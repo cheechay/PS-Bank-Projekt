@@ -20,44 +20,69 @@ $id = $_SESSION['id'] ?? '';
 <body>
     <div class="container">
         <h1>Hello <?php echo $firstname; ?>! Welcome to your Account </h1>
-        <div class="konto-area">
 
-            <div class="left">
-                <button name="withdraw" value="1" type="submit" onclick="getWithdraw()">
-                    <img src="withdraw.png" alt="PNG withdrawal">
-                    <label for="withdrawal">Cash Withdrawal</label>
-                </button>
-            </div>
-            <div class="right">
-                <button name="deposit" value="1" type="submit" onclick="getDeposit()">
-                    <img src="deposit.png" alt="PNG Deposit">
-                    <label for="Deposit">Deposit</label>
-                </button>
-            </div>
-            <div class="left">
+        <div class="atm-layout">
+      <!-- LEFT BUTTONS -->
+      <div class="btn-leftside">
+         <button class="atm-btn" name="withdraw" value="1" type="submit" onclick="getWithdraw()">
+         <img src="withdraw.png" alt="withdrawal">
+        
+        </button>
 
-                <button name="balance" type="submit" onclick="getAmount()">
-                    <img src="Balance+.png" alt="PNG Balance"> <!-- need to change the icon-->
-                    <label for="Balance Check">Balance Check</label>
-                </button>
+         <button class="atm-btn" name="balance" type="submit" onclick="getAmount()">
+                    <img src="Balance+.png" alt="Balance">
+        
+        </button>
+      </div>
 
-            </div>
-            <div class="right">
-                <button name="transfer" value="1" type="submit" onclick="getTransfer()">
-                    <img src="trasfer.png" alt="PNG Transfer">
-                    <label for="Money Transfer">Money Transfer</label>
-                </button>
-            </div>
+      <!-- SCREEN -->
+      <div class="konto-area" id="screen">
+         <div class="menu-item left">🔷 Cash Withdrawal</div>
+        <div class="menu-item right">Deposit 🔷</div>
+        <div class="menu-item left">🔷 Balance Check</div>
+        <div class="menu-item right">Money Transfer 🔷</div>
+      </div>
 
-        </div>
+      <!-- RIGHT BUTTONS -->
+      <div class="btn-rightside">
+          <button class="atm-btn" name="deposit" value="1" type="submit" onclick="getDeposit()">
+                    <img src="deposit.png" alt="Deposit">
+         
+        </button>
 
+        <button class="atm-btn"  name="transfer" value="1" type="submit" onclick="getTransfer()">
+                    <img src="trasfer.png" alt="Transfer">
+      
+        </button>
+      </div>
+    </div>
+
+ <!-- CASH SLOT -->
+    <div class="slot cash">
+      <div class="slot-label">CASH</div>
+      <div class="slot-mouth"></div>
+
+      <div class="cash-stack">
+        <div class="bill"><img src="5euro.png" alt="5euro"></div>
+        <div class="bill"><img src="5euro.png" alt="5euro"></div>
+        <div class="bill"><img src="5euro.png" alt="5euro"></div>
+        <div class="bill"><img src="5euro.png" alt="5euro"></div>
+      </div>
+    </div>
+   
+   <a href="login.html"> <button class="back-btn">Abrechen </button></a>
 
     </div>
+
+   
 </body>
 
 </html>
 
 <script>
+
+
+
     function getAmount() {
         alert('Your balance is ' + <?php echo json_encode($amount); ?>);
     }
@@ -89,11 +114,15 @@ $id = $_SESSION['id'] ?? '';
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'amount=' + encodeURIComponent(withdrawAmount)
+                
             })
                 .then(response => response.text())
                 .then(data => {
                     alert(data);
+                    dispenseCash();
                     location.reload();
+                    
+
                 })
                 .catch(error => console.error(error));
         } else {
@@ -131,5 +160,22 @@ $id = $_SESSION['id'] ?? '';
             }
         }
     }
+
+ function dispenseCash(){
+  const stack = document.querySelector(".cash-stack");
+  if (!stack) return;
+
+  // restart animation
+  stack.classList.remove("dispense");
+  void stack.offsetWidth; // force reflow
+  stack.classList.add("dispense");
+
+  // retract bills after 3 seconds
+  setTimeout(() => {
+    stack.classList.remove("dispense");
+  }, 3000);
+}
+ 
+ 
 
 </script>
