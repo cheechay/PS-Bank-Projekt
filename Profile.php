@@ -70,7 +70,7 @@ $id = $_SESSION['id'] ?? '';
             </div>
         </div>
 
-        <a href="login.html"> <button class="back-btn">Abbrechen </button></a>
+        <a href="login.html"> <button class="back-btn">Close </button></a>
 
     </div>
 
@@ -140,7 +140,7 @@ $id = $_SESSION['id'] ?? '';
         // Check if both values are not null or empty
         if (transferAmount != null && usersID != null && transferAmount.trim() !== "" && usersID.trim() !== "") {
             // Send the data using fetch to 'transfer.php'
-            dispenseCash();
+
             fetch('transfer.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -150,12 +150,14 @@ $id = $_SESSION['id'] ?? '';
                 .then(response => response.text())
                 .then(data => {
                     alert(data);
+
                     location.reload();
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Something went wrong.');
                 });
+            dispenseCash();
         } else {
 
             if (usersID == null || usersID.trim() === "") {
